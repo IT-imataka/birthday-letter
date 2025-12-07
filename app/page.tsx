@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import  confetti  from "canvas-confetti";
 
 export default function BirthdayLetter() {
   // 手紙が開いているかどうかの状態を管理
@@ -23,6 +24,11 @@ export default function BirthdayLetter() {
       // ■ これから「開く」とき
       setIsOpen(true);
       setZIndex(0); // 開くときは即座に奥にやってOK
+      confetti({
+        particleCount: 150, // 紙吹雪の数
+        spread: 60,         // 広がる角度
+        origin: { y: 0.6 }  // 発射位置（0.6は画面の下から60%の位置＝封筒のあたり）
+      });
     }
   };
 
